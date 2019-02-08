@@ -6,6 +6,7 @@ export default class ItemView extends Component {
     super(props);
     this.state = {
       viewedItem: {},
+      currentOption: {}
     };
   }
 
@@ -14,13 +15,25 @@ export default class ItemView extends Component {
       return data.json();
     }).then((item) => {
       this.setState({viewedItem: item});
+      this.getDefaultItemOption(item);
+    });
+  }
+
+  getDefaultItemOption(item) {
+    item.options.some((option) => {
+      if (option.isDefault) {
+        this.setState({currentOption: option});
+        return true;
+      }
+      return false;
     });
   }
 
   render() {
+    const { images } = this.state.currentOption;
     return (
       <div>
-        <PhotoView />
+        <PhotoView images={images} />
       </div>
     );
   }
