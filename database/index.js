@@ -31,6 +31,7 @@ Item.count({}, (err, count) => {
     Item.insertMany(sampleData, (err) => {
       if (err) return console.error(err);
       console.log('Sample data inserted successfully!')
+      mongoose.disconnect();
     });
   }
 });
