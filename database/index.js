@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const itemsDataGenerator = require('./helpers.js');
+
 mongoose.connect('mongodb://localhost/jjam-items');
 
 const itemSchema = new mongoose.Schema({
@@ -17,8 +19,18 @@ const itemSchema = new mongoose.Schema({
   }]
 });
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+let Item = mongoose.model('Item', itemSchema);
 
+Item.count({}, (err, count) => {
+  if (err) return console.error(err);
+  if (count === 0) {
+    let sampleData = itemsDataGenerator();
+    Item.insertMany(sampleData, (err) => {
+      if (err) return console.error(err);
+      console.log('Sample data inserted successfully!')
+    });
+  }
 });
+
+module.exports = mongoose.connection;
+
