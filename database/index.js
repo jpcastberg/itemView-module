@@ -13,29 +13,30 @@ const itemSchema = new mongoose.Schema({
     isDefault: Boolean,
     color: {
       colorName: String,
-      hexValue: String
+      hexValue: String,
     },
     images: [{
       url: String,
-      isDefault: Boolean
-    }]
-  }]
+      isDefault: Boolean,
+    }],
+  }],
 });
 
-let Item = mongoose.model('Item', itemSchema);
+const Item = mongoose.model('Item', itemSchema);
 
 Item.count({}, (err, count) => {
   if (err) return console.error(err);
   if (count === 0) {
-    let sampleData = itemsDataGenerator();
-    Item.insertMany(sampleData, (err) => {
-      if (err) return console.error(err);
-      console.log('Sample data inserted successfully!')
+    const sampleData = itemsDataGenerator();
+    Item.insertMany(sampleData, (mongoErr) => {
+      if (err) return console.error(mongoErr);
+      console.log('Sample data inserted successfully!');
       mongoose.disconnect();
     });
+  } else {
+    console.error('Database is already seeded!');
   }
 });
 
 module.exports.dbConnection = mongoose.connection;
-module.exports.items = Item
-
+module.exports.items = Item;

@@ -1,34 +1,34 @@
 const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const idGenerator = () => {
   let max = 999999;
-  let min = 100000
+  let min = 100000;
   let id = Math.floor(Math.random() * (max - min) + min);
   return id;
 }
 
 const nameGenerator = () => {
-  let itemName = ''
+  let itemName = '';
   let describers = [['Champion ', 'Nike ', 'Stussy ', 'Patagonia '],
-  ['Exclusive ', 'Long Sleeve ', 'Graphic ', 'Woven '],
-  ['Lightweight ', 'Pullover ', 'Logo ', 'Striped ', 'Zipper '],
-  ['T-Shirt', 'Hoodie', 'Jersey', 'Tank Top']]
+    ['Exclusive ', 'Long Sleeve ', 'Graphic ', 'Woven '],
+    ['Lightweight ', 'Pullover ', 'Logo ', 'Striped ', 'Zipper '],
+    ['T-Shirt', 'Hoodie', 'Jersey', 'Tank Top']]
   for (let idx = 0; idx < describers.length; idx++) {
     let randDescriberIdx = Math.floor(Math.random() * describers[idx].length);
     itemName += describers[idx][randDescriberIdx];
   }
   return itemName;
-}
+};
 
 const onlineOnlyGenerator = () => {
   let bools = [true, false]
   let random = Math.floor(Math.random() * 2);
   return bools[random];
-}
+};
 
 const colorObjGenerator = () => {
   let colorObj = {};
@@ -38,14 +38,14 @@ const colorObjGenerator = () => {
   colorObj.colorName = colors[randomIndex];
   colorObj.hexValue = hexValues[randomIndex];
   return colorObj;
-}
+};
 
 const imgArrayGenerator = () => {
   let images = [];
   let imageVariations = ['a', 'b', 'c', 'd', 'e', 'f'];
   let baseUrl = 'https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/'
   let set = getRandomIntInclusive(1, 2);
-  let randomNumber = getRandomIntInclusive(1, 6)
+  let randomNumber = getRandomIntInclusive(1, 6);
   for (let i = 0; i < randomNumber; i++) {
     let image = {};
     image.url = `${baseUrl}00000${set}${imageVariations[i]}.jpg`
@@ -77,7 +77,7 @@ const optionsGenerator = () => {
 }
 
 const itemsDataGenerator = () => {
-  const items = []
+  const items = [];
   for (let i = 0; i < 100; i++) {
     items.push({
       id: idGenerator(),
@@ -85,9 +85,9 @@ const itemsDataGenerator = () => {
       type: 'Top',
       price: getRandomIntInclusive(20, 100),
       onlineOnly: onlineOnlyGenerator(),
-      options: optionsGenerator()
-    })
+      options: optionsGenerator(),
+    });
   }
   return items;
 }
-module.exports = itemsDataGenerator
+module.exports = itemsDataGenerator;
