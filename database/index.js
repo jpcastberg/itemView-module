@@ -35,5 +35,6 @@ Item.count({}, (err, count) => {
   }
 });
 
-module.exports = mongoose.connection;
+module.exports.dbConnection = mongoose.connection;
+module.exports.items = Item
 
