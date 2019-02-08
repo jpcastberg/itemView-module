@@ -45,7 +45,8 @@ const imgArrayGenerator = () => {
   let imageVariations = ['a', 'b', 'c', 'd', 'e', 'f'];
   let baseUrl = 'https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/'
   let set = getRandomIntInclusive(1, 2);
-  for (let i = 0; i < 6; i++) {
+  let randomNumber = getRandomIntInclusive(1, 6)
+  for (let i = 0; i < randomNumber; i++) {
     let image = {};
     image.url = `${baseUrl}00000${set}${imageVariations[i]}.jpg`
     if (i === 0) {
@@ -58,6 +59,23 @@ const imgArrayGenerator = () => {
   return images;
 }
 
+const optionsGenerator = () => {
+  const options = [];
+  const randomNumber = Math.floor(Math.random() * 4);
+  for (let i = randomNumber; i < 4; i++) {
+    let option = {};
+    if (i === randomNumber) {
+      option.isDefault = true;
+    } else {
+      option.isDefault = false;
+    }
+    option.color = colorObjGenerator();
+    option.images = imgArrayGenerator();
+    options.push(option);
+  }
+  return options;
+}
+
 const itemsDataGenerator = () => {
   const items = []
   for (let i = 0; i < 100; i++) {
@@ -67,8 +85,7 @@ const itemsDataGenerator = () => {
       type: 'Top',
       price: getRandomIntInclusive(20, 100),
       onlineOnly: onlineOnlyGenerator(),
-      color: colorObjGenerator(),
-      images: imgArrayGenerator()
+      options: optionsGenerator()
     })
   }
   return items;

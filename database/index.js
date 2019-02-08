@@ -9,13 +9,16 @@ const itemSchema = new mongoose.Schema({
   type: String,
   price: Number,
   onlineOnly: Boolean,
-  color: {
-    colorName: String,
-    hexValue: String
-  },
-  images: [{
-    url: String,
-    isDefault: Boolean
+  options: [{
+    isDefault: Boolean,
+    color: {
+      colorName: String,
+      hexValue: String
+    },
+    images: [{
+      url: String,
+      isDefault: Boolean
+    }]
   }]
 });
 
