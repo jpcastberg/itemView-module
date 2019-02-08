@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
+    "build": "webpack -w",
     "seed": "node database/index.js",
     "start": "nodemon ./server/server.js"
   },
