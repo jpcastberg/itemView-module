@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import PhotoView from './photoView.js';
+import PhotoView from './photoView.jsx';
 
 export default class ItemView extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
     this.state = {
-       item: {}
-    }
+      item: {},
+    };
   }
 
   // componentDidMount() {
@@ -17,12 +16,11 @@ export default class ItemView extends Component {
   //     console.log(json);
   //   });
   // }
-  
   render() {
     return (
       <div>
-        <PhotoView/>
+        <PhotoView />
       </div>
-    )
+    );
   }
 }
