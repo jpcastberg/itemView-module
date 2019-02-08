@@ -5,17 +5,18 @@ export default class ItemView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: {},
+      viewedItem: {},
     };
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:3002/656884').then((data) => {
-  //     return data.json();
-  //   }).then((json) => {
-  //     console.log(json);
-  //   });
-  // }
+  componentDidMount() {
+    fetch('http://localhost:3002/656884').then((data) => {
+      return data.json();
+    }).then((item) => {
+      this.setState({viewedItem: item});
+    });
+  }
+
   render() {
     return (
       <div>
