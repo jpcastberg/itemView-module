@@ -1,10 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import ItemView from './components/itemView.js'
 
-const App = () => {
-  return (
-    <div>React is mounted!!</div>
-  );
-}
-
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<ItemView/>, document.getElementById('app'));
