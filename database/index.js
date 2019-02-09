@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/jjam-items');
+mongoose.connect('mongodb://localhost/jjam-items', { useNewUrlParser: true });
 
 const itemSchema = new mongoose.Schema({
   id: Number,
