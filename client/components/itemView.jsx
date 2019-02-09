@@ -6,7 +6,7 @@ export default class ItemView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewedItem: {},
+      currentItem: {},
       currentOption: {},
     };
   }
@@ -15,7 +15,7 @@ export default class ItemView extends Component {
     fetch('http://localhost:3002/656884').then((data) => {
       return data.json();
     }).then((item) => {
-      this.setState({viewedItem: item});
+      this.setState({currentItem: item});
       this.getDefaultItemOption(item);
     });
   }

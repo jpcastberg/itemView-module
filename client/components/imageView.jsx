@@ -8,6 +8,7 @@ export default class ImageView extends Component {
       imageSet: [],
       heroImage: {},
     };
+    this.handleImagePickerClick = this.handleImagePickerClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -31,6 +32,11 @@ export default class ImageView extends Component {
     });
   }
 
+  handleImagePickerClick(event) {
+    let index = event.nativeEvent.target.getAttribute('data-index');
+    this.setState({heroImage: this.state.imageSet[index]});
+  }
+
   generateImagePickerOptions() {
     const imagePickerOptions = this.state.imageSet.map((image, idx) => {
       let imageClass = 'image-picker-option';
@@ -44,6 +50,7 @@ export default class ImageView extends Component {
           alt=""
           data-index={idx}
           className={imageClass}
+          onClick={this.handleImagePickerClick}
         />
       );
     });
