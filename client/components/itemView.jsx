@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PhotoView from './photoView.jsx';
+import ImageView from './imageView.jsx';
+import './itemView.css';
 
 export default class ItemView extends Component {
   constructor(props) {
@@ -34,8 +35,8 @@ export default class ItemView extends Component {
   render() {
     const { images } = this.state.currentOption;
     return (
-      <div>
-        <PhotoView photos={images} />
+      <div id="item-view">
+        <ImageView images={images} />
       </div>
     );
   }
