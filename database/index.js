@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const itemsDataGenerator = require('./helpers.js');
 
 mongoose.connect('mongodb://localhost/jjam-items');
 
@@ -23,20 +22,6 @@ const itemSchema = new mongoose.Schema({
 });
 
 const Item = mongoose.model('Item', itemSchema);
-
-Item.count({}, (err, count) => {
-  if (err) return console.error(err);
-  if (count === 0) {
-    const sampleData = itemsDataGenerator();
-    Item.insertMany(sampleData, (mongoErr) => {
-      if (err) return console.error(mongoErr);
-      console.log('Sample data inserted successfully!');
-      mongoose.disconnect();
-    });
-  } else {
-    console.error('Database is already seeded!');
-  }
-});
 
 module.exports.dbConnection = mongoose.connection;
 module.exports.items = Item;
