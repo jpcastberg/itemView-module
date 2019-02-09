@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ImageView from './imageView.jsx';
+import DetailsView from './detailsView.jsx';
 import './itemView.css';
 
 export default class ItemView extends Component {
@@ -33,10 +34,16 @@ export default class ItemView extends Component {
   }
 
   render() {
+    const { name, onlineOnly, price, options } = this.state.currentItem;
     const { images } = this.state.currentOption;
     return (
       <div id="item-view">
         <ImageView images={images} />
+        <DetailsView 
+          name={name} 
+          onlineOnly={onlineOnly}
+          price={price}
+          options={options} />
       </div>
     );
   }
