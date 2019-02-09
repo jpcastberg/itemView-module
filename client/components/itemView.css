@@ -26,9 +26,13 @@
   border: solid;
   border-width: 1px;
   border-color: transparent;
+  cursor: pointer;
 }
 
 .image-picker-option:hover {
-  cursor: pointer;
+  border-color: rgb(167, 167, 167);
+}
+
+.hero-image {
   border-color: rgb(167, 167, 167);
 }

@@ -31,18 +31,27 @@ export default class ImageView extends Component {
     });
   }
 
-  render() {
+  generateImagePickerOptions() {
     const imagePickerOptions = this.state.imageSet.map((image, idx) => {
+      let imageClass = 'image-picker-option';
+      if (image === this.state.heroImage) {
+        imageClass += ' hero-image';
+      }
       return (
         <img
           key={idx}
-          src={image.url} 
-          alt="" 
+          src={image.url}
+          alt=""
           data-index={idx}
-          className="image-picker-option"
+          className={imageClass}
         />
       );
     });
+    return imagePickerOptions;
+  }
+
+  render() {
+    const imagePickerOptions = this.generateImagePickerOptions();
     const { heroImage } = this.state;
     return (
       <div id="image-view">
