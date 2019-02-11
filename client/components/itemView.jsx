@@ -13,10 +13,9 @@ export default class ItemView extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3002/714917').then((data) => {
-      return data.json();
-    }).then((item) => {
-      this.setState({currentItem: item});
+    fetch('http://localhost:3002/714917').then(item => item.json(),
+      error => console.error(error)).then((item) => {
+      this.setState({ currentItem: item });
       this.getDefaultItemOption(item);
     });
   }
@@ -34,16 +33,23 @@ export default class ItemView extends Component {
   }
 
   render() {
-    const { name, onlineOnly, price, options } = this.state.currentItem;
-    const { images } = this.state.currentOption;
+    const { currentItem, currentOption } = this.state;
+    const {
+      name,
+      onlineOnly,
+      price,
+      options,
+    } = currentItem;
+    const { images } = currentOption;
     return (
       <div id="item-view">
         <ImageView images={images} />
-        <DetailsView 
-          name={name} 
+        <DetailsView
+          name={name}
           onlineOnly={onlineOnly}
           price={price}
-          options={options} />
+          options={options}
+        />
       </div>
     );
   }
