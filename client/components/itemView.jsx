@@ -13,7 +13,7 @@ export default class ItemView extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3002/656884').then((data) => {
+    fetch('http://localhost:3002/714917').then((data) => {
       return data.json();
     }).then((item) => {
       this.setState({currentItem: item});

@@ -1,56 +1,52 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class ImageView extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
-      imageSet: [],
       heroImage: {},
     };
     this.handleImagePickerClick = this.handleImagePickerClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.images !== prevProps.images) {
-      this.setState({
-        imageSet: this.props.images,
-      });
-      this.setHero(this.props.images);
+    const { images } = this.props;
+    if (images !== prevProps.images) {
+      this.setDefaultHero(images);
     }
   }
 
-  setHero(images) {
-    images.some((image) => {
-      if (image.isDefault) {
-        this.setState({
-          heroImage: image,
-        });
-        return true;
-      }
-      return false;
-    });
+  setDefaultHero(images) {
+    images.some(image => (
+      image.isDefault ? !this.setState({
+        heroImage: image,
+      }) : false
+    ));
   }
 
-  handleImagePickerClick(event) {
-    let index = event.nativeEvent.target.getAttribute('data-index');
-    this.setState({heroImage: this.state.imageSet[index]});
+  handleImagePickerClick(idx) {
+    const { images } = this.props;
+    this.setState({ heroImage: images[idx] });
   }
 
   generateImagePickerOptions() {
-    const imagePickerOptions = this.state.imageSet.map((image, idx) => {
+    const { heroImage } = this.state;
+    const { images } = this.props;
+    const imagePickerOptions = images.map((image, idx) => {
       let imageClass = 'image-picker-option';
-      if (image === this.state.heroImage) {
-        imageClass += ' hero-image';
+      if (image === heroImage) {
+        imageClass += ' picker-current-hero';
       }
       return (
         <img
-          key={idx}
+          key={image._id}
           src={image.url}
           alt=""
-          data-index={idx}
           className={imageClass}
-          onClick={this.handleImagePickerClick}
+          onClick={() => {
+            this.handleImagePickerClick(idx);
+          }}
         />
       );
     });
@@ -70,3 +66,11 @@ export default class ImageView extends Component {
     );
   }
 }
+
+ImageView.defaultProps = {
+  images: [],
+};
+
+ImageView.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object),
+};
