@@ -18,6 +18,14 @@
   padding: 1vmax;
 }
 
+#details-view {
+  display: flex;
+  flex-direction: column;
+  margin: 1vmax;
+
+  margin-right: 5vmax;
+}
+
 .image-picker {
   display: flex;
   flex-direction: column;
@@ -38,6 +46,12 @@
   border-color: rgb(167, 167, 167);
 }
 
-.hero-image {
+.picker-current-hero {
   border-color: rgb(167, 167, 167);
+}
+
+.option {
+  height: 2vmax;
+  width: 2vmax;
+  border-radius: 50%;
 }
