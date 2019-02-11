@@ -1,4 +1,4 @@
-const { items, dbConnection } = require('./index.js');
+const { items, dbConnection } = require('../database/index.js');
 let dbItems;
 
 beforeAll(() => {
