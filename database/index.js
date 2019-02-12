@@ -6,6 +6,7 @@ mongoose.connect('mongodb://localhost/jjam-items');
 
 const itemSchema = new mongoose.Schema({
   id: String,
+  brand: String,
   name: String,
   type: String,
   price: Number,
