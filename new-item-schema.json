@@ -1,5 +1,5 @@
 {
-	"id" : 41385576,
+	"id" : "41385576",
 	"name" : "Champion Reverse Weave Hoodie Sweatshirt",
 	"type" : "Top",
 	"price" : 60,
@@ -15,7 +15,7 @@
   },
 	"options" : [
 		{
-      "id" : 000001,
+      "id" : "000001",
 			"isDefault" : true,
 			"color" : {
         "colorName" : "Washed Black",
@@ -58,7 +58,7 @@
 			]
 		},
     {
-      "id" : 000002,
+      "id" : "000002",
 			"isDefault" : false,
 			"color" : {
         "colorName" : "Grey",
@@ -101,7 +101,7 @@
 			]
     },
     {
-      "id" : 000003,
+      "id" : "000003",
 			"isDefault" : false,
 			"color" : {
         "colorName" : "Gold",
@@ -144,7 +144,7 @@
 			]
     },
     {
-      "id" : 000004,
+      "id" : "000004",
 			"isDefault" : false,
 			"color" : {
         "colorName" : "White",

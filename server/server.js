@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/:itemId', (req, res) => {
   const { itemId } = req.params;
-  items.find({ id: itemId }, (err, item) => {
+  items.find({ id: itemId.toString() }, (err, item) => {
     if (err) {
       res.status(400).end();
       return console.error(err);
