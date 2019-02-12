@@ -25,7 +25,7 @@ module.exports = {
   },
   options: [
     {
-      id: '000001',
+      optionId: '000001',
       isDefault: true,
       color: {
         colorName: 'Washed Black',
@@ -68,7 +68,7 @@ module.exports = {
       ],
     },
     {
-      id: '000002',
+      optionId: '000002',
       isDefault: false,
       color: {
         colorName: 'Grey',
@@ -111,7 +111,7 @@ module.exports = {
       ],
     },
     {
-      id: '000003',
+      optionId: '000003',
       isDefault: false,
       color: {
         colorName: 'Gold',
@@ -154,7 +154,7 @@ module.exports = {
       ],
     },
     {
-      id: '000004',
+      optionId: '000004',
       isDefault: false,
       color: {
         colorName: 'White',
