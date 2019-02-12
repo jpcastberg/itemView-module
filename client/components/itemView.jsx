@@ -35,16 +35,32 @@ export default class ItemView extends Component {
   render() {
     const { currentItem, currentOption } = this.state;
     const {
+      id,
+      brand,
       name,
       onlineOnly,
+      reviews,
+      details,
       price,
       options,
     } = currentItem;
-    const { images } = currentOption;
+    const {
+      images,
+      optionId,
+      color,
+      availability,
+    } = currentOption;
     return (
       <div id="item-view">
         <ImageView images={images} />
         <DetailsView
+          sku={id}
+          brand={brand}
+          reviews={reviews}
+          details={details}
+          color={color}
+          availability={availability}
+          optionId={optionId}
           name={name}
           onlineOnly={onlineOnly}
           price={price}

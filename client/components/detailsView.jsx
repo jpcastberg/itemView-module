@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class DetailsView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
   generateOptions() {
     const { options } = this.props;
     return options.map(option => (
@@ -17,6 +24,8 @@ export default class DetailsView extends Component {
     const {
       name,
       price,
+      brand,
+      color,
       onlineOnly,
       options,
     } = this.props;
@@ -29,7 +38,9 @@ export default class DetailsView extends Component {
         <span className="product-meta-header">{name}</span>
         <span className="product-meta-header">{`$${price}.00`}</span>
         <span className="product-meta">Available on orders $35.00–$1,000.00 by</span>
-        <span href="">See all --BRAND--</span>
+        <span href="">
+        See all {` ${brand}`}
+        </span>
         <span>--IN STOCK--</span>
         <span>--EXTENDED SIZES AVAILABLE--</span>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
@@ -37,7 +48,7 @@ export default class DetailsView extends Component {
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
         <legend>
           Color:
-          <span>--COLOR--</span>
+          <span>{` ${color.colorName}`}</span>
         </legend>
         <div className="item-colors">
           {itemColors}
@@ -76,6 +87,9 @@ DetailsView.defaultProps = {
   price: 0,
   onlineOnly: false,
   options: [],
+  color: {
+    colorName: 'default',
+  },
 };
 
 DetailsView.propTypes = {
@@ -83,4 +97,5 @@ DetailsView.propTypes = {
   price: PropTypes.number,
   onlineOnly: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.object),
+  color: PropTypes.objectOf(PropTypes.string),
 };
