@@ -37,12 +37,13 @@ export default class DetailsView extends Component {
       availability,
       selectedQty,
       selectedSize,
+      optionId,
     } = this.props;
     return (
-      <div id="details-view">
+      <div className="product-meta" id="details-view">
         <span className="product-meta-header">{name}</span>
         <span className="product-meta-header">{`$${price}.00`}</span>
-        <span className="product-meta">Available on orders $35.00–$1,000.00 by</span>
+        <span>Available on orders $35.00–$1,000.00 by</span>
         <span>
           {`See All ${brand}`}
         </span>
@@ -54,6 +55,7 @@ export default class DetailsView extends Component {
         <ColorPicker
           color={color}
           options={options}
+          optionId={optionId}
           handleSelectOption={handleSelectOption}
         />
         {/* SIZE/QUANTITY SELECTOR WIDGET - NEW COMPONENT */}

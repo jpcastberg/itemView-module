@@ -71,7 +71,6 @@ export default class ItemView extends Component {
       color,
       availability,
     } = currentOption;
-    console.log(availability);
     return (
       <div id="item-view">
         <ImageView images={images} />

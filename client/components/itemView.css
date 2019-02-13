@@ -5,6 +5,10 @@
   border: 0;
 }
 
+ol, ul {
+  list-style: none;
+}
+
 #item-view {
   display: flex;
   flex-direction: row;
@@ -26,6 +30,10 @@
   margin: 1vmax;
 
   margin-right: 5vmax;
+}
+
+.label {
+  color: #000;
 }
 
 .image-picker {
@@ -53,11 +61,18 @@
 }
 
 .product-meta-header {
-  font: lighter 1.5rem/1.15 helvetica,arial,sans-serif;
+  font: lighter 2.2rem/1.15 helvetica,arial,sans-serif;
   text-align: left;
   color: #222;
   letter-spacing: .02rem;
   -webkit-font-smoothing: antialiased;
+}
+
+.product-meta {
+  font: 1.1rem/1.36 helvetica,arial,sans-serif;
+  letter-spacing: .04rem;
+  color: #767676;
+  line-height: 1.3;
 }
 
 .item-colors {
@@ -66,7 +81,29 @@
 }
 
 .item-option {
-  height: 2vmax;
-  width: 2vmax;
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid #aaa;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.item-option-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin: 0 15px 10px 0;
+}
+
+.item-option-wrapper:hover {
+  border-color: #767676;
+}
+
+.item-option-wrapper-selected {
+  border-color: #767676;
 }
