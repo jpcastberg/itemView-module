@@ -3,20 +3,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class SizeQtyPicker extends Component {
-
   generateSizeOptions() {
-    const { availability, selectedSize } = this.props;
+    const { availability, selectedSize, handleSelectOption } = this.props;
     const availabilityKeys = Object.keys(availability);
     const sizeOptions = availabilityKeys.map((size) => {
+      let clickHandler = () => {
+        handleSelectOption('size', size);
+      };
       let className = 'size-option';
       if (availability[size] === 0) {
         className += ' size-option-out-of-stock';
+        clickHandler = () => {};
       }
       if (size === selectedSize) {
         className += ' size-option-selected';
       }
       return (
-        <li className={className}>
+        <li className={className} onClick={clickHandler}>
           <span>
             {size.toUpperCase()}
           </span>
@@ -68,9 +71,11 @@ export default class SizeQtyPicker extends Component {
 SizeQtyPicker.defaultProps = {
   availability: {},
   selectedSize: '',
+  handleSelectOption: () => {},
 };
 
 SizeQtyPicker.propTypes = {
+  handleSelectOption: PropTypes.func,
   availability: PropTypes.objectOf(PropTypes.number),
   selectedSize: PropTypes.string,
 };
