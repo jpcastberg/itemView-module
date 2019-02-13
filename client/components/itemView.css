@@ -166,6 +166,15 @@ h1 {
   cursor: default;
 }
 
+.accordian-content-displayed {
+  display: inline;
+  color: #000;
+}
+
+.accordian-content-hidden {
+  display: none;
+}
+
 .dummy-link {
   text-decoration: underline;
 }
