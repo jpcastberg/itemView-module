@@ -38,8 +38,11 @@ export default class ItemView extends Component {
   handleSelectOption(optionType, selectedOption) {
     const newState = {};
     if (optionType === 'color') {
-      const { currentItem } = this.state;
+      const { currentItem, selectedSize } = this.state;
       newState.currentOption = currentItem.options[selectedOption];
+      if (newState.currentOption.availability[selectedSize] === 0) {
+        this.setState({ selectedSize: null });
+      }
     } else if (optionType === 'size') {
       newState.selectedSize = selectedOption;
     } else if (optionType === 'qty') {
