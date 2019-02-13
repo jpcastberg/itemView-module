@@ -1,23 +1,30 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ColorPicker from './colorPicker.jsx';
 
 export default class DetailsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      selected: {
+        optionId: null,
+        size: null,
+        qty: null,
+      },
     };
   }
 
-  generateOptions() {
+  generateInStockMessage() {
     const { options } = this.props;
-    return options.map(option => (
-      <img
-        className="item-option"
-        src="https://images.urbanoutfitters.com/is/image/UrbanOutfitters/48556245_040_s"
-        alt=""
-      />
-    ));
+    const itemIsInStock = options.some((option) => {
+      const quantities = Object.values(option.availability);
+      return quantities.some(quantity => quantity > 0);
+    });
+    if (itemIsInStock) {
+      return 'Currently in Stock';
+    }
+    return 'Currently Out of Stock';
   }
 
   render() {
@@ -28,31 +35,26 @@ export default class DetailsView extends Component {
       color,
       onlineOnly,
       options,
+      handleSelectOption,
     } = this.props;
-    let itemColors = null;
-    if (options) {
-      itemColors = this.generateOptions();
-    }
     return (
       <div id="details-view">
         <span className="product-meta-header">{name}</span>
         <span className="product-meta-header">{`$${price}.00`}</span>
         <span className="product-meta">Available on orders $35.00–$1,000.00 by</span>
-        <span href="">
-        See all {` ${brand}`}
+        <span>
+          {`See All ${brand}`}
         </span>
-        <span>--IN STOCK--</span>
+        <span>{this.generateInStockMessage()}</span>
         <span>--EXTENDED SIZES AVAILABLE--</span>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
         <span>--REVIEWS WIDGET--</span>
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
-        <legend>
-          Color:
-          <span>{` ${color.colorName}`}</span>
-        </legend>
-        <div className="item-colors">
-          {itemColors}
-        </div>
+        <ColorPicker
+          color={color}
+          options={options}
+          handleSelectOption={handleSelectOption}
+        />
         {/* SIZE SELECTOR WIDGET - NEW COMPONENT */}
         <legend>
           Size:

@@ -10,6 +10,7 @@ export default class ItemView extends Component {
       currentItem: {},
       currentOption: {},
     };
+    this.handleSelectOption = this.handleSelectOption.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,12 @@ export default class ItemView extends Component {
       }
       return false;
     });
+  }
+
+  handleSelectOption(optionIdx) {
+    const { currentItem } = this.state;
+    const selectedOption = currentItem.options[optionIdx];
+    this.setState({ currentOption: selectedOption });
   }
 
   render() {
@@ -65,6 +72,7 @@ export default class ItemView extends Component {
           onlineOnly={onlineOnly}
           price={price}
           options={options}
+          handleSelectOption={this.handleSelectOption}
         />
       </div>
     );
