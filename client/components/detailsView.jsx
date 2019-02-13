@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ColorPicker from './colorPicker.jsx';
 import SizeQtyPicker from './sizeQtyPicker.jsx';
+import Accordion from './Accordion.jsx';
 
 export default class DetailsView extends Component {
   constructor(props) {
@@ -76,6 +77,7 @@ export default class DetailsView extends Component {
         <button type="button">Shop Related Items</button>
         {/* ADDITIONAL DETAILS WIDGET - NEW COMPONENT */}
         <div>--ADDITIONAL DETAILS--</div>
+        <Accordion />
       </div>
     );
   }
