@@ -75,23 +75,35 @@ export default class ItemView extends Component {
       availability,
     } = currentOption;
     return (
-      <div id="item-view">
-        <ImageView images={images} />
-        <DetailsView
-          sku={id}
-          brand={brand}
-          reviews={reviews}
-          details={details}
-          color={color}
-          availability={availability}
-          optionId={optionId}
-          name={name}
-          onlineOnly={onlineOnly}
-          price={price}
-          options={options}
-          selectedQty={selectedQty}
-          selectedSize={selectedSize}
-          handleSelectOption={this.handleSelectOption}
+      <div>
+        <img
+          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/above.png"
+          alt=""
+          className="dummy-image"
+        />
+        <div id="item-view">
+          <ImageView images={images} />
+          <DetailsView
+            sku={id}
+            brand={brand}
+            reviews={reviews}
+            details={details}
+            color={color}
+            availability={availability}
+            optionId={optionId}
+            name={name}
+            onlineOnly={onlineOnly}
+            price={price}
+            options={options}
+            selectedQty={selectedQty}
+            selectedSize={selectedSize}
+            handleSelectOption={this.handleSelectOption}
+          />
+        </div>
+        <img
+          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/below.png"
+          alt=""
+          className="dummy-image"
         />
       </div>
     );
