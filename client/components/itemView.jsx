@@ -49,7 +49,12 @@ export default class ItemView extends Component {
   }
 
   render() {
-    const { currentItem, currentOption } = this.state;
+    const {
+      currentItem,
+      currentOption,
+      selectedQty,
+      selectedSize,
+    } = this.state;
     const {
       id,
       brand,
@@ -66,6 +71,7 @@ export default class ItemView extends Component {
       color,
       availability,
     } = currentOption;
+    console.log(availability);
     return (
       <div id="item-view">
         <ImageView images={images} />
@@ -81,6 +87,8 @@ export default class ItemView extends Component {
           onlineOnly={onlineOnly}
           price={price}
           options={options}
+          selectedQty={selectedQty}
+          selectedSize={selectedSize}
           handleSelectOption={this.handleSelectOption}
         />
       </div>

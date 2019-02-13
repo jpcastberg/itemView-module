@@ -34,6 +34,9 @@ export default class DetailsView extends Component {
       onlineOnly,
       options,
       handleSelectOption,
+      availability,
+      selectedQty,
+      selectedSize,
     } = this.props;
     return (
       <div id="details-view">
@@ -64,7 +67,12 @@ export default class DetailsView extends Component {
           </div>
         </legend>
         {/* QUANTITY SELECTOR WIDGET - NEW COMPONENT */}
-        <SizeQtyPicker handleOptionSelection={handleSelectOption}/>
+        <SizeQtyPicker
+          handleSelectOption={handleSelectOption}
+          availability={availability}
+          selectedQty={selectedQty}
+          selectedSize={selectedSize}
+        />
         <label htmlFor="quantity-selector">Qty:</label>
         <select name="" id="quantity-selector">
           <option value="sup yo!">ayy</option>
