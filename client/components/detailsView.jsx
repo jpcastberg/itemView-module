@@ -56,27 +56,13 @@ export default class DetailsView extends Component {
           options={options}
           handleSelectOption={handleSelectOption}
         />
-        {/* SIZE SELECTOR WIDGET - NEW COMPONENT */}
-        <legend>
-          Size:
-          <div>
-            --SIZE PICKER--
-          </div>
-          <div>
-            --SIZE GUIDE--
-          </div>
-        </legend>
-        {/* QUANTITY SELECTOR WIDGET - NEW COMPONENT */}
+        {/* SIZE/QUANTITY SELECTOR WIDGET - NEW COMPONENT */}
         <SizeQtyPicker
           handleSelectOption={handleSelectOption}
           availability={availability}
           selectedQty={selectedQty}
           selectedSize={selectedSize}
         />
-        <label htmlFor="quantity-selector">Qty:</label>
-        <select name="" id="quantity-selector">
-          <option value="sup yo!">ayy</option>
-        </select>
         {/* SHIPPING OPTIONS WIDGET - NEW COMPONENT */}
         <div>
           --SHIPPING OPTIONS--
