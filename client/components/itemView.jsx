@@ -9,6 +9,8 @@ export default class ItemView extends Component {
     this.state = {
       currentItem: {},
       currentOption: {},
+      selectedSize: null,
+      selectedQty: null,
     };
     this.handleSelectOption = this.handleSelectOption.bind(this);
   }
@@ -33,10 +35,17 @@ export default class ItemView extends Component {
     });
   }
 
-  handleSelectOption(optionIdx) {
-    const { currentItem } = this.state;
-    const selectedOption = currentItem.options[optionIdx];
-    this.setState({ currentOption: selectedOption });
+  handleSelectOption(optionType, selectedOption) {
+    const newState = {};
+    if (optionType === 'color') {
+      const { currentItem } = this.state;
+      newState.currentOption = currentItem.options[selectedOption];
+    } else if (optionType === 'size') {
+      newState.selectedSize = selectedOption;
+    } else if (optionType === 'qty') {
+      newState.selectedQty = selectedOption;
+    }
+    this.setState(newState);
   }
 
   render() {

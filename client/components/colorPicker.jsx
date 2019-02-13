@@ -12,7 +12,7 @@ export default class ColorPicker extends Component {
           src={option.color.icon}
           alt=""
           onClick={() => {
-            handleSelectOption(idx);
+            handleSelectOption('color', idx);
           }}
         />
       ));

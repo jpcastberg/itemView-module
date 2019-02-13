@@ -2,16 +2,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ColorPicker from './colorPicker.jsx';
+import SizeQtyPicker from './sizeQtyPicker.jsx';
 
 export default class DetailsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: {
-        optionId: null,
-        size: null,
-        qty: null,
-      },
+      selectedSize: null,
+      selectedQty: null,
     };
   }
 
@@ -66,6 +64,7 @@ export default class DetailsView extends Component {
           </div>
         </legend>
         {/* QUANTITY SELECTOR WIDGET - NEW COMPONENT */}
+        <SizeQtyPicker handleOptionSelection={handleSelectOption}/>
         <label htmlFor="quantity-selector">Qty:</label>
         <select name="" id="quantity-selector">
           <option value="sup yo!">ayy</option>
