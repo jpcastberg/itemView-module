@@ -41,16 +41,18 @@ export default class DetailsView extends Component {
     } = this.props;
     return (
       <div className="product-meta" id="details-view">
-        <span className="product-meta-header">{name}</span>
+        <h1>
+          <span className="product-meta-header">{name}</span>
+        </h1>
         <span className="product-meta-header">{`$${price}.00`}</span>
-        <span>Available on orders $35.00–$1,000.00 by</span>
-        <span>
+        <span className="product-meta">Available on orders $35.00–$1,000.00 by</span>
+        <span className="product-meta dummy-link">
           {`See All ${brand}`}
         </span>
-        <span>{this.generateInStockMessage()}</span>
-        <span>--EXTENDED SIZES AVAILABLE--</span>
+        <span className="product-meta">{this.generateInStockMessage()}</span>
+        <span className="product-meta">--EXTENDED SIZES AVAILABLE--</span>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
-        <span>--REVIEWS WIDGET--</span>
+        <span className="product-meta">--REVIEWS WIDGET--</span>
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
         <ColorPicker
           color={color}

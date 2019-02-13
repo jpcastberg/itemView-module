@@ -9,6 +9,17 @@ ol, ul {
   list-style: none;
 }
 
+h1 {
+  font: lighter 1.8rem/1.15 helvetica,arial,sans-serif;
+  letter-spacing: .02rem;
+  text-align: center;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  text-decoration: none;
+  text-align: left;
+}
+
 #item-view {
   display: flex;
   flex-direction: row;
@@ -34,6 +45,13 @@ ol, ul {
 #size-list {
   display: flex;
   flex-direction: row;
+}
+
+#quantity-selector {
+  width: 100px;
+  height: 44px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
 }
 
 .label {
@@ -65,18 +83,21 @@ ol, ul {
 }
 
 .product-meta-header {
-  font: lighter 2.2rem/1.15 helvetica,arial,sans-serif;
+  font: lighter 1.5vmax/1.15 helvetica,arial,sans-serif;
   text-align: left;
   color: #222;
   letter-spacing: .02rem;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: 0.8vmax;
 }
 
 .product-meta {
-  font: 1.1rem/1.36 helvetica,arial,sans-serif;
+  width: max-content;
+  font: 0.75rem/1.36 helvetica,arial,sans-serif;
   letter-spacing: .04rem;
   color: #767676;
   line-height: 1.3;
+  padding-bottom: 0.8vmax;
 }
 
 .item-colors {
@@ -85,8 +106,8 @@ ol, ul {
 }
 
 .item-option {
-  height: 3rem;
-  width: 3rem;
+  height: 2.6vmax;
+  width: 2.6vmax;
   border: 1px solid #aaa;
   border-radius: 50%;
   cursor: pointer;
@@ -96,8 +117,8 @@ ol, ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 3.2vmax;
+  height: 3.2vmax;
   padding: 2px;
   border: 1px solid transparent;
   border-radius: 50%;
@@ -111,8 +132,9 @@ ol, ul {
 .size-option {
   display: flex;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  font: 0.8rem/1.36 helvetica,arial,sans-serif;
   align-items: center;
   border: 1px solid #767676;
   margin: 2px 5px 15px 0px;
@@ -124,8 +146,22 @@ ol, ul {
   border-color: #000;
 }
 
+.size-option-selected {
+  font-weight: bold;
+}
+
 .size-option-out-of-stock {
   color: #aaa !important;
   border-color: #aaa !important;
+  font-weight: normal;
   cursor: default;
+}
+
+.dummy-link {
+  text-decoration: underline;
+}
+
+.dummy-link:hover {
+  text-decoration: none;
+  cursor: pointer;
 }

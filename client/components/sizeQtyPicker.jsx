@@ -41,7 +41,7 @@ export default class SizeQtyPicker extends Component {
     for (let i = 1; i <= 10; i++) {
       const isDisabled = i > stockCountOfSelected;
       quantityOptions.push(
-        <option disabled={isDisabled}>{i}</option>
+        <option disabled={isDisabled}>{i}</option>,
       );
     }
     return quantityOptions;
@@ -59,7 +59,11 @@ export default class SizeQtyPicker extends Component {
         <div>
           --SIZE GUIDE--
         </div>
-        <div>Qty:</div>
+        <div>
+          <strong className="label">
+          Qty:
+          </strong>
+        </div>
         <select name="" id="quantity-selector">
           {this.generateQuantityOptions()}
         </select>
