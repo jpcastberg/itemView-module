@@ -10,13 +10,17 @@ export default class SizeQtyPicker extends Component {
     const sizeOptions = availabilityKeys.map((size) => {
       let className = 'size-option';
       if (availability[size] === 0) {
-        className += ' out-of-stock';
+        className += ' size-option-out-of-stock';
       }
       if (size === selectedSize) {
-        className += '-selected';
+        className += ' size-option-selected';
       }
       return (
-        <li className={className}>{size.toUpperCase()}</li>
+        <li className={className}>
+          <span>
+            {size.toUpperCase()}
+          </span>
+        </li>
       );
     });
     return sizeOptions;
@@ -43,10 +47,10 @@ export default class SizeQtyPicker extends Component {
   render() {
     return (
       <div>
-        <legend>
+        <strong className="label">
           Size:
-        </legend>
-        <ul>
+        </strong>
+        <ul id="size-list">
           {this.generateSizeOptions()}
         </ul>
         <div>

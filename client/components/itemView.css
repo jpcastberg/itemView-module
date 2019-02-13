@@ -28,8 +28,12 @@ ol, ul {
   display: flex;
   flex-direction: column;
   margin: 1vmax;
-
   margin-right: 5vmax;
+}
+
+#size-list {
+  display: flex;
+  flex-direction: row;
 }
 
 .label {
@@ -100,10 +104,28 @@ ol, ul {
   margin: 0 15px 10px 0;
 }
 
-.item-option-wrapper:hover {
+.item-option-wrapper:hover, .item-option-wrapper-selected {
   border-color: #767676;
 }
 
-.item-option-wrapper-selected {
-  border-color: #767676;
+.size-option {
+  display: flex;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  border: 1px solid #767676;
+  margin: 2px 5px 15px 0px;
+  cursor: pointer;
+}
+
+.size-option-selected, .size-option:hover {
+  color: #000;
+  border-color: #000;
+}
+
+.size-option-out-of-stock {
+  color: #aaa !important;
+  border-color: #aaa !important;
+  cursor: default;
 }
