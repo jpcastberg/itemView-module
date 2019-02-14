@@ -79,8 +79,14 @@ export default class SizeQtyPicker extends Component {
           {this.generateQuantityOptions()}
         </select>
         <br />
-        <input className="radio" type="radio" checked />
-        <span className="product-meta label">Ship to Me</span>
+        <div>
+          <input className="radio" type="radio" checked />
+          <span className="product-meta label">Ship to Me</span>
+        </div>
+        <div>
+          <input className="radio" type="radio" disabled />
+          <span className="product-meta">In-Store Pickup</span>
+        </div>
       </div>
     );
   }

@@ -125,10 +125,6 @@ export default class DetailsView extends Component {
           selectedQty={selectedQty}
           selectedSize={selectedSize}
         />
-        {/* SHIPPING OPTIONS WIDGET - NEW COMPONENT */}
-        <div>
-          --SHIPPING OPTIONS--
-        </div>
         {this.generateSizeNotSelectedError()}
         <button id="add-to-bag-button" type="button" onClick={this.handleBagButtonClick}>
           {this.generateAddToBagButtonText()}

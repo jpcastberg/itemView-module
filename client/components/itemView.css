@@ -64,11 +64,13 @@ p {
   height: 44px;
   border: 1px solid #aaa;
   border-radius: 5px;
+  margin-bottom: calc(5px + .2vmax);
 }
 
 #add-to-bag-button {
   height: calc(25px + 1vmax);
   margin-bottom: calc(5px + .8vmax);
+  margin-top: calc(10px + .8vmax);
   font: helvetica,arial,sans-serif;
   font-weight: 650;
   font-size: calc(9px + .6vmax);
@@ -238,7 +240,7 @@ p {
 }
 
 .radio {
-  margin-right: 10px;
+  margin: 10px 10px 10px 0px;
 }
 
 .accordion {
