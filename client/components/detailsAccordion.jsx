@@ -39,13 +39,11 @@ export default class DetailsAccordion extends Component {
         </div>
         <div className={this.generateContentClassName('accordion')}>
           <div>
-            <p>
+            <p className="product-meta">
               Product Sku: {sku} ; Color Code: {colorCode}
             </p>
-          </div>
-          <br />
-          <div>
-            <p>
+            <br />
+            <p className="product-meta">
               {details.description}
             </p>
           </div>

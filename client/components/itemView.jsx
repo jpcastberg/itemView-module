@@ -23,16 +23,13 @@ export default class ItemView extends Component {
     });
   }
 
+  // Finds and selects the first option labelled 'isDefault' from the item object
   getDefaultItemOption(item) {
-    item.options.some((option) => {
-      if (option.isDefault) {
-        this.setState({
-          currentOption: option,
-        });
-        return true;
-      }
-      return false;
-    });
+    item.options.some(option => (
+      option.isDefault ? !this.setState({
+        currentOption: option,
+      }) : false
+    ));
   }
 
   handleSelectOption(optionType, selectedOption) {
@@ -40,6 +37,7 @@ export default class ItemView extends Component {
     if (optionType === 'color') {
       const { currentItem, selectedSize } = this.state;
       newState.currentOption = currentItem.options[selectedOption];
+      // If the newly selected color is out of stock on the chosen size, deselect it
       if (newState.currentOption.availability[selectedSize] === 0) {
         this.setState({ selectedSize: null });
       }

@@ -10,7 +10,7 @@ export default class SizeQtyPicker extends Component {
       let clickHandler = () => {
         handleSelectOption('size', size);
       };
-      let className = 'size-option';
+      let className = 'product-meta size-option';
       if (availability[size] === 0) {
         className += ' size-option-out-of-stock';
         clickHandler = () => {};
@@ -50,16 +50,18 @@ export default class SizeQtyPicker extends Component {
   render() {
     return (
       <div>
-        <strong className="label">
-          Size:
-        </strong>
+        <div className="product-meta sub-component-header">
+          <strong className="label">
+            Size:
+          </strong>
+        </div>
         <ul id="size-list">
           {this.generateSizeOptions()}
         </ul>
         <div>
           --SIZE GUIDE--
         </div>
-        <div>
+        <div className="product-meta sub-component-header">
           <strong className="label">
           Qty:
           </strong>

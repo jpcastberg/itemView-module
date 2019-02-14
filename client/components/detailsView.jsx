@@ -43,17 +43,21 @@ export default class DetailsView extends Component {
       details,
     } = this.props;
     return (
-      <div className="product-meta" id="details-view">
-        <h1>
-          <span className="product-meta-header">{name}</span>
+      <div id="details-view">
+        <h1 className="product-meta-header">
+          {name}
         </h1>
-        <span className="product-meta-header">{`$${price}.00`}</span>
-        <span className="product-meta">Available on orders $35.00–$1,000.00 by</span>
+        <h1 className="product-meta-header">
+          {`$${price}.00`}
+        </h1>
+        <div>
+          <p className="product-meta">Available on orders $35.00–$1,000.00 by</p>
+        </div>
         <span className="product-meta dummy-link">
           {`See All ${brand}`}
         </span>
-        <span className="product-meta">{this.generateInStockMessage()}</span>
-        <span className="product-meta">--EXTENDED SIZES AVAILABLE--</span>
+        <p className="product-meta">{this.generateInStockMessage()}</p>
+        <p className="product-meta">--EXTENDED SIZES AVAILABLE--</p>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
         <span className="product-meta">--REVIEWS WIDGET--</span>
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
@@ -75,7 +79,7 @@ export default class DetailsView extends Component {
           --SHIPPING OPTIONS--
         </div>
         <button id="add-to-bag-button" type="button">Add to Bag</button>
-        <span>Add to Wish List</span>
+        <span className="product-meta dummy-link">Add to Wish List</span>
         <button id="shop-related-items-button" type="button">Shop Related Items</button>
         <DetailsAccordion colorCode={color.colorCode} sku={sku} details={details} />
       </div>
