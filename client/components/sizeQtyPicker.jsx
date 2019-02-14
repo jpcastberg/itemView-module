@@ -48,6 +48,7 @@ export default class SizeQtyPicker extends Component {
   }
 
   render() {
+    const { selectedQty, handleSelectOption } = this.props;
     return (
       <div>
         <div className="product-meta sub-component-header">
@@ -66,7 +67,15 @@ export default class SizeQtyPicker extends Component {
           Qty:
           </strong>
         </div>
-        <select name="" id="quantity-selector">
+        <select
+          value={selectedQty}
+          onChange={(event) => {
+            const newValue = event.target.value;
+            handleSelectOption('qty', newValue);
+          }}
+          name=""
+          id="quantity-selector"
+        >
           {this.generateQuantityOptions()}
         </select>
       </div>

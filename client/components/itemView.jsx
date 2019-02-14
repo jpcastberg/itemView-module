@@ -10,7 +10,7 @@ export default class ItemView extends Component {
       currentItem: {},
       currentOption: {},
       selectedSize: null,
-      selectedQty: null,
+      selectedQty: 1,
     };
     this.handleSelectOption = this.handleSelectOption.bind(this);
   }
