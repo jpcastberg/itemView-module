@@ -80,7 +80,13 @@ export default class DetailsView extends Component {
         </div>
         <button id="add-to-bag-button" type="button">Add to Bag</button>
         <span className="product-meta dummy-link">Add to Wish List</span>
-        <button id="shop-related-items-button" type="button">Shop Related Items</button>
+        <button
+          id="shop-related-items-button"
+          type="button"
+          onClick={() => {location.href='#jjc-popular'}}
+        >
+          Shop Related Items
+        </button>
         <DetailsAccordion colorCode={color.colorCode} sku={sku} details={details} />
       </div>
     );
