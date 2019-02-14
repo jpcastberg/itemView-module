@@ -6,6 +6,15 @@ import SizeQtyPicker from './sizeQtyPicker.jsx';
 import DetailsAccordion from './detailsAccordion.jsx';
 
 export default class DetailsView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addToBagWasClicked: false,
+      itemAddedToBag: false,
+    };
+    this.handleBagButtonClick = this.handleBagButtonClick.bind(this);
+  }
+
   generateInStockMessage() {
     const { availability } = this.props.currentOption;
     if (availability === undefined) return '';
@@ -28,6 +37,30 @@ export default class DetailsView extends Component {
       return 'Extended Sizes Are Available';
     }
     return 'Extended Sizes Are Not Available';
+  }
+
+  sizeIsSelected() {
+    const { selectedSize } = this.props;
+    if (selectedSize) return true;
+    return false;
+  }
+
+  generateAddToBagButtonText() {
+    const { itemAddedToBag } = this.state;
+    if (itemAddedToBag) {
+      setTimeout((() => {
+        this.setState({ itemAddedToBag: false, addToBagWasClicked: false });
+      }).bind(this), 3000);
+      return 'Added to Bag';
+    }
+    return 'Add to Bag';
+  }
+
+  handleBagButtonClick() {
+    this.setState({ addToBagWasClicked: true });
+    if (this.sizeIsSelected()) {
+      this.setState({ itemAddedToBag: true });
+    }
   }
 
   render() {
@@ -82,7 +115,9 @@ export default class DetailsView extends Component {
         <div>
           --SHIPPING OPTIONS--
         </div>
-        <button id="add-to-bag-button" type="button">Add to Bag</button>
+        <button id="add-to-bag-button" type="button" onClick={this.handleBagButtonClick}>
+          {this.generateAddToBagButtonText()}
+        </button>
         <span className="product-meta dummy-link">Add to Wish List</span>
         <button
           id="shop-related-items-button"
