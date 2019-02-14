@@ -6,14 +6,6 @@ import SizeQtyPicker from './sizeQtyPicker.jsx';
 import DetailsAccordion from './detailsAccordion.jsx';
 
 export default class DetailsView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedSize: null,
-      selectedQty: null,
-    };
-  }
-
   generateInStockMessage() {
     const { availability } = this.props.currentOption;
     if (availability === undefined) return '';
