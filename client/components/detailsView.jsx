@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ColorPicker from './colorPicker.jsx';
 import SizeQtyPicker from './sizeQtyPicker.jsx';
-import Accordion from './Accordion.jsx';
+import DetailsAccordion from './detailsAccordion.jsx';
 
 export default class DetailsView extends Component {
   constructor(props) {
@@ -28,6 +28,7 @@ export default class DetailsView extends Component {
 
   render() {
     const {
+      sku,
       name,
       price,
       brand,
@@ -39,6 +40,7 @@ export default class DetailsView extends Component {
       selectedQty,
       selectedSize,
       optionId,
+      details,
     } = this.props;
     return (
       <div className="product-meta" id="details-view">
@@ -72,12 +74,10 @@ export default class DetailsView extends Component {
         <div>
           --SHIPPING OPTIONS--
         </div>
-        <button type="button">Add to Bag</button>
+        <button id="add-to-bag-button" type="button">Add to Bag</button>
         <span>Add to Wish List</span>
-        <button type="button">Shop Related Items</button>
-        {/* ADDITIONAL DETAILS WIDGET - NEW COMPONENT */}
-        <div>--ADDITIONAL DETAILS--</div>
-        <Accordion />
+        <button id="shop-related-items-button" type="button">Shop Related Items</button>
+        <DetailsAccordion colorCode={color.colorCode} sku={sku} details={details} />
       </div>
     );
   }
