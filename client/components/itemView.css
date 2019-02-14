@@ -109,6 +109,15 @@ p {
   opacity: .7;
 }
 
+#size-not-selected-error {
+  font: 0.70rem/1.36 helvetica,arial,sans-serif;
+  letter-spacing: .04rem;
+  color: red;
+  line-height: 1.3;
+  margin-bottom: 0.8vmax;
+  margin-top: 0.8vmax;
+}
+
 #shop-related-items-button:focus {
   outline: 0px;
 }
