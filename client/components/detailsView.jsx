@@ -15,15 +15,27 @@ export default class DetailsView extends Component {
   }
 
   generateInStockMessage() {
-    const { options } = this.props;
-    const itemIsInStock = options.some((option) => {
-      const quantities = Object.values(option.availability);
-      return quantities.some(quantity => quantity > 0);
-    });
+    const { availability } = this.props.currentOption;
+    if (availability === undefined) return '';
+    const quantities = Object.values(availability);
+    const itemIsInStock = quantities.some(quantity => quantity > 0);
     if (itemIsInStock) {
       return 'Currently in Stock';
     }
     return 'Currently Out of Stock';
+  }
+
+  generateExtendedSizesMessage() {
+    const { availability } = this.props.currentOption;
+    if (availability === undefined) return '';
+    const extendedSizes = ['xl', 'xxl', 'xxxl'];
+    const extendedSizesAreAvailable = extendedSizes.some((extendedSize) => {
+      return availability[extendedSize];
+    });
+    if (extendedSizesAreAvailable) {
+      return 'Extended Sizes Are Available';
+    }
+    return 'Extended Sizes Are Not Available';
   }
 
   render() {
@@ -57,7 +69,7 @@ export default class DetailsView extends Component {
           {`See All ${brand}`}
         </span>
         <p className="product-meta">{this.generateInStockMessage()}</p>
-        <p className="product-meta">--EXTENDED SIZES AVAILABLE--</p>
+        <p className="product-meta">{this.generateExtendedSizesMessage()}</p>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
         <span className="product-meta">--REVIEWS WIDGET--</span>
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
@@ -100,6 +112,9 @@ DetailsView.defaultProps = {
   options: [],
   color: {
     colorName: 'default',
+  },
+  currentOption: {
+    availability: {},
   },
 };
 

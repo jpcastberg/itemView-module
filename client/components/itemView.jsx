@@ -93,6 +93,7 @@ export default class ItemView extends Component {
             onlineOnly={onlineOnly}
             price={price}
             options={options}
+            currentOption={currentOption}
             selectedQty={selectedQty}
             selectedSize={selectedSize}
             handleSelectOption={this.handleSelectOption}
