@@ -56,6 +56,20 @@ export default class DetailsView extends Component {
     return 'Add to Bag';
   }
 
+  generateSizeNotSelectedError() {
+    const { addToBagWasClicked } = this.state;
+    if (addToBagWasClicked && !this.sizeIsSelected()) {
+      return (
+        <div>
+          <p id="size-not-selected-error">
+            Size must be selected to add this item to your bag.
+          </p>
+        </div>
+      );
+    }
+    return null;
+  }
+
   handleBagButtonClick() {
     this.setState({ addToBagWasClicked: true });
     if (this.sizeIsSelected()) {
@@ -115,6 +129,7 @@ export default class DetailsView extends Component {
         <div>
           --SHIPPING OPTIONS--
         </div>
+        {this.generateSizeNotSelectedError()}
         <button id="add-to-bag-button" type="button" onClick={this.handleBagButtonClick}>
           {this.generateAddToBagButtonText()}
         </button>
