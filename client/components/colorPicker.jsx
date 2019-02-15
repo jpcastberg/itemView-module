@@ -32,11 +32,13 @@ export default class ColorPicker extends Component {
     const { color } = this.props;
     const itemColors = this.generateOptions();
     return (
-      <div>
-        <strong className="label">
-          Color:
-        </strong>
-        <span>{` ${color.colorName}`}</span>
+      <div id="color-picker">
+        <div className="product-meta sub-component-header">
+          <strong className="label">
+            Color:
+          </strong>
+          <span>{` ${color.colorName}`}</span>
+        </div>
         <div className="item-colors">
           {itemColors}
         </div>

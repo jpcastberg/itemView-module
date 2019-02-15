@@ -10,7 +10,7 @@ export default class SizeQtyPicker extends Component {
       let clickHandler = () => {
         handleSelectOption('size', size);
       };
-      let className = 'size-option';
+      let className = 'product-meta size-option';
       if (availability[size] === 0) {
         className += ' size-option-out-of-stock';
         clickHandler = () => {};
@@ -41,28 +41,56 @@ export default class SizeQtyPicker extends Component {
     for (let i = 1; i <= 10; i++) {
       const isDisabled = i > stockCountOfSelected;
       quantityOptions.push(
-        <option disabled={isDisabled}>{i}</option>
+        <option disabled={isDisabled}>{i}</option>,
       );
     }
     return quantityOptions;
   }
 
   render() {
+    const { selectedQty, handleSelectOption } = this.props;
     return (
       <div>
-        <strong className="label">
-          Size:
-        </strong>
+        <div className="product-meta sub-component-header">
+          <strong className="label">
+            Size:
+          </strong>
+        </div>
         <ul id="size-list">
           {this.generateSizeOptions()}
         </ul>
         <div>
-          --SIZE GUIDE--
+          <p className="product-meta">
+            <span className="dummy-link">Size Guides</span>
+            <span> | </span>
+            <span className="dummy-link">Customers Say: True to Size</span>
+          </p>
         </div>
-        <div>Qty:</div>
-        <select name="" id="quantity-selector">
+        <div className="product-meta sub-component-header">
+          <strong className="label">
+          Qty:
+          </strong>
+        </div>
+        <select
+          value={selectedQty}
+          onChange={(event) => {
+            const newValue = event.target.value;
+            handleSelectOption('qty', newValue);
+          }}
+          name=""
+          id="quantity-selector"
+        >
           {this.generateQuantityOptions()}
         </select>
+        <br />
+        <div>
+          <input className="radio" type="radio" checked />
+          <span className="product-meta label">Ship to Me</span>
+        </div>
+        <div>
+          <input className="radio" type="radio" disabled />
+          <span className="product-meta">In-Store Pickup</span>
+        </div>
       </div>
     );
   }

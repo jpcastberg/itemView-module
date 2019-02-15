@@ -10,7 +10,7 @@ export default class ItemView extends Component {
       currentItem: {},
       currentOption: {},
       selectedSize: null,
-      selectedQty: null,
+      selectedQty: 1,
     };
     this.handleSelectOption = this.handleSelectOption.bind(this);
   }
@@ -23,23 +23,24 @@ export default class ItemView extends Component {
     });
   }
 
+  // Finds and selects the first option labelled 'isDefault' from the item object
   getDefaultItemOption(item) {
-    item.options.some((option) => {
-      if (option.isDefault) {
-        this.setState({
-          currentOption: option,
-        });
-        return true;
-      }
-      return false;
-    });
+    item.options.some(option => (
+      option.isDefault ? !this.setState({
+        currentOption: option,
+      }) : false
+    ));
   }
 
   handleSelectOption(optionType, selectedOption) {
     const newState = {};
     if (optionType === 'color') {
-      const { currentItem } = this.state;
+      const { currentItem, selectedSize } = this.state;
       newState.currentOption = currentItem.options[selectedOption];
+      // If the newly selected color is out of stock on the chosen size, deselect it
+      if (newState.currentOption.availability[selectedSize] === 0) {
+        this.setState({ selectedSize: null });
+      }
     } else if (optionType === 'size') {
       newState.selectedSize = selectedOption;
     } else if (optionType === 'qty') {
@@ -72,23 +73,36 @@ export default class ItemView extends Component {
       availability,
     } = currentOption;
     return (
-      <div id="item-view">
-        <ImageView images={images} />
-        <DetailsView
-          sku={id}
-          brand={brand}
-          reviews={reviews}
-          details={details}
-          color={color}
-          availability={availability}
-          optionId={optionId}
-          name={name}
-          onlineOnly={onlineOnly}
-          price={price}
-          options={options}
-          selectedQty={selectedQty}
-          selectedSize={selectedSize}
-          handleSelectOption={this.handleSelectOption}
+      <div>
+        <img
+          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/above.png"
+          alt=""
+          className="dummy-image"
+        />
+        <div id="item-view">
+          <ImageView images={images} />
+          <DetailsView
+            sku={id}
+            brand={brand}
+            reviews={reviews}
+            details={details}
+            color={color}
+            availability={availability}
+            optionId={optionId}
+            name={name}
+            onlineOnly={onlineOnly}
+            price={price}
+            options={options}
+            currentOption={currentOption}
+            selectedQty={selectedQty}
+            selectedSize={selectedSize}
+            handleSelectOption={this.handleSelectOption}
+          />
+        </div>
+        <img
+          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/below.png"
+          alt=""
+          className="dummy-image"
         />
       </div>
     );

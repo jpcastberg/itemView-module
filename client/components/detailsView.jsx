@@ -3,30 +3,84 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ColorPicker from './colorPicker.jsx';
 import SizeQtyPicker from './sizeQtyPicker.jsx';
+import DetailsAccordion from './detailsAccordion.jsx';
+import ShippingReturnsAccordion from './shippingReturnsAccordion.jsx';
 
 export default class DetailsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedSize: null,
-      selectedQty: null,
+      addToBagWasClicked: false,
+      itemAddedToBag: false,
     };
+    this.handleBagButtonClick = this.handleBagButtonClick.bind(this);
   }
 
   generateInStockMessage() {
-    const { options } = this.props;
-    const itemIsInStock = options.some((option) => {
-      const quantities = Object.values(option.availability);
-      return quantities.some(quantity => quantity > 0);
-    });
+    const { availability } = this.props.currentOption;
+    if (availability === undefined) return '';
+    const quantities = Object.values(availability);
+    const itemIsInStock = quantities.some(quantity => quantity > 0);
     if (itemIsInStock) {
       return 'Currently in Stock';
     }
     return 'Currently Out of Stock';
   }
 
+  generateExtendedSizesMessage() {
+    const { availability } = this.props.currentOption;
+    if (availability === undefined) return '';
+    const extendedSizes = ['xl', 'xxl', 'xxxl'];
+    const extendedSizesAreAvailable = extendedSizes.some((extendedSize) => {
+      return availability[extendedSize];
+    });
+    if (extendedSizesAreAvailable) {
+      return 'Extended Sizes Are Available';
+    }
+    return 'Extended Sizes Are Not Available';
+  }
+
+  sizeIsSelected() {
+    const { selectedSize } = this.props;
+    if (selectedSize) return true;
+    return false;
+  }
+
+  generateAddToBagButtonText() {
+    const { itemAddedToBag } = this.state;
+    if (itemAddedToBag) {
+      setTimeout((() => {
+        this.setState({ itemAddedToBag: false, addToBagWasClicked: false });
+      }).bind(this), 3000);
+      return 'Added to Bag';
+    }
+    return 'Add to Bag';
+  }
+
+  generateSizeNotSelectedError() {
+    const { addToBagWasClicked } = this.state;
+    if (addToBagWasClicked && !this.sizeIsSelected()) {
+      return (
+        <div>
+          <p id="size-not-selected-error">
+            Size must be selected to add this item to your bag.
+          </p>
+        </div>
+      );
+    }
+    return null;
+  }
+
+  handleBagButtonClick() {
+    this.setState({ addToBagWasClicked: true });
+    if (this.sizeIsSelected()) {
+      this.setState({ itemAddedToBag: true });
+    }
+  }
+
   render() {
     const {
+      sku,
       name,
       price,
       brand,
@@ -38,19 +92,29 @@ export default class DetailsView extends Component {
       selectedQty,
       selectedSize,
       optionId,
+      details,
     } = this.props;
     return (
-      <div className="product-meta" id="details-view">
-        <span className="product-meta-header">{name}</span>
-        <span className="product-meta-header">{`$${price}.00`}</span>
-        <span>Available on orders $35.00–$1,000.00 by</span>
-        <span>
+      <div id="details-view">
+        <h1 className="product-meta-header">
+          {name}
+        </h1>
+        <h1 className="product-meta-header">
+          {`$${price}.00`}
+        </h1>
+        <div id="afterpay-info">
+          <p className="product-meta">
+            Available on orders $35.00–$1,000.00 by
+          </p>
+          <img id="afterpay-image" src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/afterpay-icon.png" alt="" />
+        </div>
+        <span className="product-meta dummy-link">
           {`See All ${brand}`}
         </span>
-        <span>{this.generateInStockMessage()}</span>
-        <span>--EXTENDED SIZES AVAILABLE--</span>
+        <p className="product-meta">{this.generateInStockMessage()}</p>
+        <p className="product-meta">{this.generateExtendedSizesMessage()}</p>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
-        <span>--REVIEWS WIDGET--</span>
+        <span className="product-meta">--REVIEWS WIDGET--</span>
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
         <ColorPicker
           color={color}
@@ -65,15 +129,20 @@ export default class DetailsView extends Component {
           selectedQty={selectedQty}
           selectedSize={selectedSize}
         />
-        {/* SHIPPING OPTIONS WIDGET - NEW COMPONENT */}
-        <div>
-          --SHIPPING OPTIONS--
-        </div>
-        <button type="button">Add to Bag</button>
-        <span>Add to Wish List</span>
-        <button type="button">Shop Related Items</button>
-        {/* ADDITIONAL DETAILS WIDGET - NEW COMPONENT */}
-        <div>--ADDITIONAL DETAILS--</div>
+        {this.generateSizeNotSelectedError()}
+        <button id="add-to-bag-button" type="button" onClick={this.handleBagButtonClick}>
+          {this.generateAddToBagButtonText()}
+        </button>
+        <span className="product-meta dummy-link">Add to Wish List</span>
+        <button
+          id="shop-related-items-button"
+          type="button"
+          onClick={() => {location.href='#jjc-popular'}}
+        >
+          Shop Related Items
+        </button>
+        <DetailsAccordion colorCode={color.colorCode} sku={sku} details={details} />
+        <ShippingReturnsAccordion />
       </div>
     );
   }
@@ -86,6 +155,9 @@ DetailsView.defaultProps = {
   options: [],
   color: {
     colorName: 'default',
+  },
+  currentOption: {
+    availability: {},
   },
 };
 
