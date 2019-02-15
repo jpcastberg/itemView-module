@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ColorPicker from './colorPicker.jsx';
 import SizeQtyPicker from './sizeQtyPicker.jsx';
 import DetailsAccordion from './detailsAccordion.jsx';
+import ShippingReturnsAccordion from './shippingReturnsAccordion.jsx';
 
 export default class DetailsView extends Component {
   constructor(props) {
@@ -101,8 +102,11 @@ export default class DetailsView extends Component {
         <h1 className="product-meta-header">
           {`$${price}.00`}
         </h1>
-        <div>
-          <p className="product-meta">Available on orders $35.00–$1,000.00 by</p>
+        <div id="afterpay-info">
+          <p className="product-meta">
+            Available on orders $35.00–$1,000.00 by
+          </p>
+          <img id="afterpay-image" src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/afterpay-icon.png" alt="" />
         </div>
         <span className="product-meta dummy-link">
           {`See All ${brand}`}
@@ -138,6 +142,7 @@ export default class DetailsView extends Component {
           Shop Related Items
         </button>
         <DetailsAccordion colorCode={color.colorCode} sku={sku} details={details} />
+        <ShippingReturnsAccordion />
       </div>
     );
   }

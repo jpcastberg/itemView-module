@@ -60,7 +60,11 @@ export default class SizeQtyPicker extends Component {
           {this.generateSizeOptions()}
         </ul>
         <div>
-          --SIZE GUIDE--
+          <p className="product-meta">
+            <span className="dummy-link">Size Guides</span>
+            <span> | </span>
+            <span className="dummy-link">Customers Say: True to Size</span>
+          </p>
         </div>
         <div className="product-meta sub-component-header">
           <strong className="label">
