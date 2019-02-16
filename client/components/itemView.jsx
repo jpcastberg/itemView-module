@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ImageView from './imageView.jsx';
 import DetailsView from './detailsView.jsx';
-import './itemView.css';
+// import './itemView.css';
 
 export default class ItemView extends Component {
   constructor(props) {

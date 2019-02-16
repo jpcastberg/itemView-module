@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 
-import ImageView from '../client/components/imageView.jsx';
+import ItemView from '../client/components/itemView.jsx';
 
-describe('ImageView', () => {
-  it('should actually test something', () => {
-    const component = shallow(<ImageView />);
+describe('Itemview', () => {
+  it('render without throwing an error', () => {
+    const component = shallow(<ItemView />);
     expect(component).toHaveLength(1);
   });
 });

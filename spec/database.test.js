@@ -1,13 +1,14 @@
+/* eslint-disable no-undef */
 const { items, dbConnection } = require('../database/index.js');
 
 let dbItems;
 
 beforeAll(() => {
-  return items.find({}, (err, allItems) => {
-    if (err) return console.error(err);
-    dbConnection.close();
-    dbItems = allItems;
+  const query = items.find({}).exec();
+  query.then((queryResults) => {
+    dbItems = queryResults;
   });
+  return query;
 });
 
 describe('Database', () => {
@@ -17,18 +18,23 @@ describe('Database', () => {
   test('Documents in the database are in the correct format', () => {
     dbItems.forEach((item) => {
       expect(item).toMatchObject({
-        price: expect.any(Number),
-        id: expect.any(Number),
+        id: expect.any(String),
+        brand: expect.any(String),
         name: expect.any(String),
-        onlineOnly: expect.any(Boolean),
-        options: expect.any(Array),
         type: expect.any(String),
+        price: expect.any(Number),
+        onlineOnly: expect.any(Boolean),
+        reviews: expect.any(Object),
+        details: expect.any(Object),
+        options: expect.any(Array),
       });
       item.options.forEach((option) => {
         expect(option).toMatchObject({
-          color: expect.any(Object),
-          images: expect.any(Array),
+          optionId: expect.any(String),
           isDefault: expect.any(Boolean),
+          color: expect.any(Object),
+          availability: expect.any(Object),
+          images: expect.any(Array),
         });
       });
     });
