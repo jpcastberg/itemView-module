@@ -16,7 +16,7 @@ export default class ItemView extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3002/41385576').then(item => item.json(),
+    return fetch('http://localhost:3002/41385576').then(item => item.json(),
       error => console.error(error)).then((item) => {
       this.setState({ currentItem: item });
       this.getDefaultItemOption(item);
