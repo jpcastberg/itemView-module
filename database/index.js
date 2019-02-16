@@ -24,11 +24,8 @@ Item.count({}, (err, count) => {
   if (count === 0) {
     itemFromSampleData.save((mongoErr) => {
       if (err) return console.error(mongoErr);
-      console.log('Sample data inserted successfully!');
       mongoose.disconnect();
     });
-  } else {
-    console.error('Database is already seeded!');
   }
 });
 
