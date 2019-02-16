@@ -4,7 +4,7 @@
   "description": "",
   "main": "bundle.js",
   "scripts": {
-    "test": "jest || exit 0",
+    "test": "jest --verbose || exit 0",
     "build": "webpack -w",
     "seed": "node database/index.js",
     "start": "nodemon ./server/server.js"

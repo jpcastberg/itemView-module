@@ -1,11 +1,20 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
+import sampleData from '../database/sampleData.js';
+import fetch from 'jest-fetch-mock';
 
 import ItemView from '../client/components/itemView.jsx';
 
 describe('Itemview', () => {
-  it('render without throwing an error', () => {
-    const component = shallow(<ItemView />);
-    expect(component).toHaveLength(1);
+  const shallowItemView = shallow(<ItemView />);
+  // beforeEach(() => {
+  //   fetch.resetMocks();
+  //   fetch.mockResponseOnce(JSON.stringify(sampleData));
+  // });
+  it('renders without throwing an error', () => {
+    expect(shallowItemView).toHaveLength(1);
+  });
+  it('has a div with an id name of item-view', () => {
+    expect(shallowItemView.find('#item-view').length).toEqual(1);
   });
 });
