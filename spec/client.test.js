@@ -5,6 +5,7 @@ import fetch from 'jest-fetch-mock';
 
 import ItemView from '../client/components/itemView.jsx';
 import ImageView from '../client/components/imageView.jsx';
+import DetailsView from '../client/components/detailsView.jsx';
 
 describe('ItemView', () => {
   const shallowItemView = shallow(<ItemView />);
@@ -64,5 +65,34 @@ describe('ImageView', () => {
     const initialHeroUrl = shallowImageView.instance().state.heroImage.url;
     shallowImageView.find('.image-picker').childAt(1).simulate('click');
     expect(shallowImageView.instance().state.heroImage.url).not.toBe(initialHeroUrl);
+  });
+});
+
+describe('detailsView', () => {
+  const shallowDetailsView = shallow(<DetailsView
+    sku={sampleData.id}
+    brand={sampleData.brand}
+    reviews={sampleData.reviews}
+    details={sampleData.details}
+    color={sampleData.options[0].color}
+    availability={sampleData.options[0].availability}
+    optionId={sampleData.options[0].optionId}
+    name={sampleData.name}
+    onlineOnly={sampleData.onlineOnly}
+    price={sampleData.price}
+    options={sampleData.options}
+    currentOption={sampleData.options[0]}
+    selectedQty={1}
+    selectedSize={null}
+  />);
+  it('dynamically generates a message stating if the item is in stock', () => {
+    let availabilityOfCurrentOption = shallowDetailsView.instance()
+      .props.currentOption.availability;
+    expect(shallowDetailsView.instance().generateInStockMessage()).toBe('Currently in Stock');
+    shallowDetailsView.instance()
+      .props.currentOption.availability = { s: 0 };
+    expect(shallowDetailsView.instance().generateInStockMessage()).toBe('Currently Out of Stock');
+    shallowDetailsView.instance()
+      .props.currentOption.availability = availabilityOfCurrentOption;
   });
 });
