@@ -21,4 +21,9 @@ describe('Itemview', () => {
     shallowItemView.instance().getDefaultItemOption(sampleData);
     expect(shallowItemView.instance().state.currentOption.optionId).toBe('000001');
   });
+  it('handles user selection of item options', () => {
+    console.log(shallowItemView.instance().state);
+    shallowItemView.instance().handleSelectOption('color', 1);
+    expect(shallowItemView.instance().state.currentOption.optionId).toBe('000002');
+  });
 });

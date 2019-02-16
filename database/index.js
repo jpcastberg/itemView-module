@@ -31,25 +31,3 @@ Item.count({}, (err, count) => {
 
 module.exports.dbConnection = mongoose.connection;
 module.exports.items = Item;
-
-// const itemSchema = new mongoose.Schema({
-//   id: String,
-//   name: String,
-//   type: String,
-//   price: Number,
-//   onlineOnly: Boolean,
-//   reviews: Object,
-//   details: Object,
-//   options: [{
-//     id: String,
-//     isDefault: Boolean,
-//     color: {
-//       colorName: String,
-//       hexValue: String,
-//     },
-//     images: [{
-//       url: String,
-//       isDefault: Boolean,
-//     }],
-//   }],
-// });
