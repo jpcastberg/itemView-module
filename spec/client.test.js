@@ -4,8 +4,9 @@ import sampleData from '../database/sampleData.js';
 import fetch from 'jest-fetch-mock';
 
 import ItemView from '../client/components/itemView.jsx';
+import ImageView from '../client/components/imageView.jsx';
 
-describe('Itemview', () => {
+describe('ItemView', () => {
   const shallowItemView = shallow(<ItemView />);
   beforeEach(() => {
     fetch.resetMocks();
@@ -40,5 +41,28 @@ describe('Itemview', () => {
     shallowItemView.instance().handleSelectOption('size', 'l'); // option 000002 has 4 lgs in stock 
     shallowItemView.instance().handleSelectOption('color', 0); // option 000001 has 0 lgs in stock
     expect(shallowItemView.instance().state.selectedSize).toBe(null);
+  });
+});
+
+describe('ImageView', () => {
+  const imageList = sampleData.options[0].images;
+  const shallowImageView = shallow(<ImageView images={imageList} />);
+  beforeAll(() => {
+    shallowImageView.instance().componentDidUpdate({});
+  })
+  it('renders without throwing an error', () => {
+    expect(shallowImageView).toHaveLength(1);
+  });
+  it('renders images based on a list of images passed in thru props', () => {
+    expect(shallowImageView.find('.image-picker').children().length)
+      .toBe(imageList.length);
+  });
+  it('automatically finds the default hero image in the props list, and sets it as the hero', () => {
+    expect(shallowImageView.instance().state.heroImage.isDefault).toBe(true);
+  });
+  it('changes the hero image when a new hero image is chosen from the picker', () => {
+    const initialHeroUrl = shallowImageView.instance().state.heroImage.url;
+    shallowImageView.find('.image-picker').childAt(1).simulate('click');
+    expect(shallowImageView.instance().state.heroImage.url).not.toBe(initialHeroUrl);
   });
 });
