@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImageView from './imageView.jsx';
 import DetailsView from './detailsView.jsx';
+import CurrentPagePath from './currentPagePath.jsx';
 import './itemView.css';
 
 export default class ItemView extends Component {
@@ -79,6 +80,7 @@ export default class ItemView extends Component {
           alt=""
           className="dummy-image"
         />
+        <CurrentPagePath breadcrumbs={['Men\'s', 'Tops', 'Hoodies + Sweatshirts', 'Champion Reverse Weave Hoodie Sweatshirt']} />
         <div id="item-view">
           <ImageView images={images} />
           <DetailsView

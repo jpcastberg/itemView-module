@@ -144,6 +144,15 @@ p {
   width: 40%;
 }
 
+#current-page-path {
+  width: max-content;
+  height: max-content;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .label {
   color: #000 !important;
 }
@@ -320,4 +329,18 @@ p {
 .dummy-link:hover {
   text-decoration: none;
   cursor: pointer;
+}
+
+.breadcrumb {
+  color: #000;
+  cursor: pointer;
+}
+
+.breadcrumb:hover {
+  color: #767676;
+}
+
+.breadcrumb-divider {
+  margin-left: 10px;
+  margin-right: 10px;
 }

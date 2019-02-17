@@ -5,11 +5,13 @@ export default function CurrentPagePath(props) {
   const { breadcrumbs } = props;
   const breadcrumbEles = breadcrumbs.map((breadcrumb, idx) => {
     const breadcrumbDivider = idx < breadcrumbs.length - 1
-      ? (<span className="breadcrumb-divider">/</span>)
+      ? (<span className="product-meta breadcrumb-divider">/</span>)
       : null;
     return (
-      <span className="product-meta breadcrumb">{breadcrumb}</span>,
-      { breadcrumbDivider }
+      <span>
+        <span className="product-meta breadcrumb">{breadcrumb}</span>
+        { breadcrumbDivider }
+      </span>
     );
   });
   return (
@@ -20,7 +22,7 @@ export default function CurrentPagePath(props) {
 }
 
 CurrentPagePath.propTypes = {
-  breadcrumbs: PropTypes(Array),
+  breadcrumbs: PropTypes.arrayOf(PropTypes.string),
 };
 
 CurrentPagePath.defaultProps = {
