@@ -114,7 +114,9 @@ export default class DetailsView extends Component {
         <p className="product-meta">{this.generateInStockMessage()}</p>
         <p className="product-meta">{this.generateExtendedSizesMessage()}</p>
         {/* REVIEWS WIDGET - NEW COMPONENT */}
-        <span className="product-meta">--REVIEWS WIDGET--</span>
+        <span className="product-meta">
+          <img id="fake-stars" src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/FAKESTARS.png" alt=""/>
+        </span>
         {/* COLOR SELECTOR WIDGET - NEW COMPONENT */}
         <ColorPicker
           color={color}
