@@ -344,3 +344,8 @@ p {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.breadcrumb-item-name {
+  color: #000;
+  font-weight: bold;
+}
