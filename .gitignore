@@ -25,4 +25,5 @@ public/app.js
 build/
 dist/
 
-
+# ES Lint
+.eslintrc.js
