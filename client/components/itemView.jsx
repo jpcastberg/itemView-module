@@ -60,6 +60,7 @@ export default class ItemView extends Component {
     const {
       id,
       brand,
+      breadcrumbs,
       name,
       onlineOnly,
       reviews,
@@ -80,7 +81,7 @@ export default class ItemView extends Component {
           alt=""
           className="dummy-image"
         />
-        <CurrentPagePath breadcrumbs={['Men\'s', 'Tops', 'Hoodies + Sweatshirts', 'Champion Reverse Weave Hoodie Sweatshirt']} />
+        <CurrentPagePath breadcrumbs={breadcrumbs} name={name} />
         <div id="item-view">
           <ImageView images={images} />
           <DetailsView

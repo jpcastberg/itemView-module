@@ -2,6 +2,7 @@ module.exports = {
   id: '41385576',
   brand: 'Champion',
   name: 'Champion Reverse Weave Hoodie Sweatshirt',
+  breadcrumbs: ['Men\'s', 'Tops', 'Hoodies + Sweatshirts'],
   type: 'Top',
   price: 60,
   onlineOnly: false,
