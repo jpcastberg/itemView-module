@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ImageView from './imageView.jsx';
 import DetailsView from './detailsView.jsx';
-import './itemView.css';
+import CurrentPagePath from './currentPagePath.jsx';
+import '../styles/itemView.css';
 
 export default class ItemView extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ export default class ItemView extends Component {
     const {
       id,
       brand,
+      breadcrumbs,
       name,
       onlineOnly,
       reviews,
@@ -74,11 +76,7 @@ export default class ItemView extends Component {
     } = currentOption;
     return (
       <div>
-        <img
-          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/above.png"
-          alt=""
-          className="dummy-image"
-        />
+        <CurrentPagePath breadcrumbs={breadcrumbs} name={name} />
         <div id="item-view">
           <ImageView images={images} />
           <DetailsView
@@ -99,11 +97,6 @@ export default class ItemView extends Component {
             handleSelectOption={this.handleSelectOption}
           />
         </div>
-        <img
-          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/below.png"
-          alt=""
-          className="dummy-image"
-        />
       </div>
     );
   }

@@ -136,12 +136,22 @@ p {
 }
 
 #afterpay-image {
+  width: 14%;
   margin-left: 3px;
   margin-bottom: calc(7px + 0.5vmax);
 }
 
 #fake-stars {
-  width: 40%;
+  width: 30%;
+}
+
+#current-page-path {
+  width: max-content;
+  height: max-content;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .label {
@@ -320,4 +330,23 @@ p {
 .dummy-link:hover {
   text-decoration: none;
   cursor: pointer;
+}
+
+.breadcrumb {
+  color: #000;
+  cursor: pointer;
+}
+
+.breadcrumb:hover {
+  color: #767676;
+}
+
+.breadcrumb-divider {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.breadcrumb-item-name {
+  color: #000;
+  font-weight: bold;
 }

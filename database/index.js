@@ -8,6 +8,7 @@ const itemSchema = new mongoose.Schema({
   id: String,
   brand: String,
   name: String,
+  breadcrumbs: Array,
   type: String,
   price: Number,
   onlineOnly: Boolean,

@@ -1,13 +1,12 @@
 # Project Name
 
-> Project description
+This is a clone of the Urban Outfitters "Item View" component on their item page. Created for the Hack Reactor Front End Capstone Project.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrsf111-fec-jjam/popular-module
+  - https://github.com/hrsf111-fec-jjam/reviews-module
+  - https://github.com/hrsf111-fec-jjam/navbar-module
 
 ## Table of Contents
 
@@ -17,16 +16,31 @@
 
 ## Usage
 
-> Some usage instructions
+1. Clone this repo
+
+     `git clone https://github.com/hrsf111-fec-jjam/itemView-module.git`
+
+1. Install dependencies
+
+   `npm install`
+
+1. Build the files
+
+   `npm run build`
+
+1. Run the server
+
+   `npm start`
+
+1. Navigate to https://localhost:3002 in your browser!
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node version 11
 
-## Development
+<!-- ## Development
 
 ### Installing Dependencies
 
@@ -35,5 +49,5 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
-```
+``` -->
 
