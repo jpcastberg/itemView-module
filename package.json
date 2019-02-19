@@ -6,7 +6,7 @@
   "engines" : { "node" : ">=11" },
   "scripts": {
     "test": "jest --verbose || exit 0",
-    "build": "webpack -w",
+    "build": "webpack",
     "seed": "node database/index.js",
     "start": "node ./server/server.js"
   },
