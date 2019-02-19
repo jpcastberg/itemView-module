@@ -136,12 +136,13 @@ p {
 }
 
 #afterpay-image {
+  width: 14%;
   margin-left: 3px;
   margin-bottom: calc(7px + 0.5vmax);
 }
 
 #fake-stars {
-  width: 40%;
+  width: 30%;
 }
 
 #current-page-path {
