@@ -77,7 +77,7 @@ export default class ItemView extends Component {
     return (
       <div>
         <CurrentPagePath breadcrumbs={breadcrumbs} name={name} />
-        <div id="item-view">
+        <div id="item-view-container">
           <ImageView images={images} />
           <DetailsView
             sku={id}

@@ -26,7 +26,7 @@ p {
   word-wrap: normal;
 }
 
-#item-view {
+#item-view-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
