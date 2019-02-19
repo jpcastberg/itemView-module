@@ -76,11 +76,6 @@ export default class ItemView extends Component {
     } = currentOption;
     return (
       <div>
-        <img
-          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/above.png"
-          alt=""
-          className="dummy-image"
-        />
         <CurrentPagePath breadcrumbs={breadcrumbs} name={name} />
         <div id="item-view">
           <ImageView images={images} />
@@ -102,11 +97,6 @@ export default class ItemView extends Component {
             handleSelectOption={this.handleSelectOption}
           />
         </div>
-        <img
-          src="https://s3-us-west-1.amazonaws.com/jjam-hrsf-111/images/below.png"
-          alt=""
-          className="dummy-image"
-        />
       </div>
     );
   }
