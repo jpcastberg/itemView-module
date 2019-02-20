@@ -5,11 +5,11 @@
   border: 0;
 }
 
-ol, ul {
+#item-view ol, ul {
   list-style: none;
 }
 
-h1 {
+#item-view h1 {
   font: lighter 1.8rem/1.15 helvetica,arial,sans-serif;
   letter-spacing: .02rem;
   text-align: center;
@@ -20,7 +20,7 @@ h1 {
   text-align: left;
 }
 
-p {
+#item-view p {
   max-width: inherit;
   overflow-wrap: normal;
   word-wrap: normal;
