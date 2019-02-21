@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const sampleData = require('./sampleData.js');
 // const itemsDataGenerator = require('./helpers.js');
 
-mongoose.connect('mongodb://localhost/jjam-items', { useNewUrlParser: true });
+mongoose.connect('mongodb://jjam-itemview:27017/jjam-items', { useNewUrlParser: true });
 
 const itemSchema = new mongoose.Schema({
   id: String,

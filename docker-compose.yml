@@ -1,0 +1,15 @@
+version: '3'
+services: 
+  web: 
+    image: itemview-module
+    build: ./
+    command: node server/server.js
+    ports:
+      - "3002:3002"
+    depends_on:
+      - "jjam-itemview"
+  jjam-itemview:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+  
