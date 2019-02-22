@@ -1,0 +1,13 @@
+version: '3'
+services: 
+  web: 
+    image: jpcastberg/itemview-module:deployment
+    command: node server/server.js
+    ports:
+      - "80:3002"
+    depends_on:
+      - "jjam-itemview"
+  jjam-itemview:
+    image: "mongo"
+    ports:
+      - "27017:27017"
