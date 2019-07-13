@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
 import ImageView from './imageView.jsx';
 import DetailsView from './detailsView.jsx';
 import CurrentPagePath from './currentPagePath.jsx';
+
 import '../styles/itemView.css';
+
+import sampleData from '../data/sampleData';
 
 export default class ItemView extends Component {
   constructor(props) {
@@ -17,11 +21,8 @@ export default class ItemView extends Component {
   }
 
   componentDidMount() {
-    return fetch('/1').then(item => item.json(),
-      error => console.error(error)).then((item) => {
-      this.setState({ currentItem: item });
-      this.getDefaultItemOption(item);
-    });
+    this.setState({ currentItem: sampleData });
+    this.getDefaultItemOption(sampleData);
   }
 
   // Finds and selects the first option labelled 'isDefault' from the item object

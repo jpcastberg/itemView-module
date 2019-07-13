@@ -1,6 +1,7 @@
 {
   "name": "reviews",
   "version": "1.0.0",
+  "homepage": "https://jpcastberg.github.io/itemView-module",
   "description": "",
   "main": "bundle.js",
   "engines": {
@@ -10,7 +11,9 @@
     "test": "jest --verbose || exit 0",
     "build": "webpack --mode=production",
     "seed": "node database/index.js",
-    "start": "node ./server/server.js"
+    "start": "node ./server/server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "keywords": [],
   "author": "",
@@ -48,6 +51,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "gh-pages": "^2.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.1.0",
     "jest-fetch-mock": "^2.1.1",
